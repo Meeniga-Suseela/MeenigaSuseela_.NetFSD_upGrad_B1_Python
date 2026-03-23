@@ -1,44 +1,26 @@
 // js/profile.js
 
 document.addEventListener("DOMContentLoaded", () => {
-    // --- Initialize student info if not already in localStorage ---
-    if (!localStorage.getItem("studentName")) {
-        localStorage.setItem("studentName", "Meeniga Suseela");
-    }
-    if (!localStorage.getItem("studentEmail")) {
-        localStorage.setItem("studentEmail", "meenigasuseela@gmail.com");
-    }
 
-    // Get student info from localStorage
-    let studentName = localStorage.getItem("studentName");
-    let studentEmail = localStorage.getItem("studentEmail");
+    // --- Initialize student info in localStorage if missing ---
+    if (!localStorage.getItem("studentName")) localStorage.setItem("studentName", "Meeniga Suseela");
+    if (!localStorage.getItem("studentEmail")) localStorage.setItem("studentEmail", "meenigasuseela@gmail.com");
+    if (!localStorage.getItem("completedCourses")) localStorage.setItem("completedCourses", JSON.stringify([]));
+    if (!localStorage.getItem("quizScore")) localStorage.setItem("quizScore", "0");
+    if (!localStorage.getItem("allCourses")) localStorage.setItem("allCourses", JSON.stringify(["Course 1", "Course 2", "Course 3"]));
 
-    // --- Student Information Section ---
-    const studentInfoSection = document.querySelector("section.card:nth-of-type(1)");
-    studentInfoSection.innerHTML = `
-        <h3>Student Information</h3>
-        <form id="studentInfoForm">
-            <div class="mb-3">
-                <label for="studentNameInput" class="form-label"><strong>Name:</strong></label>
-                <input type="text" class="form-control" id="studentNameInput" value="${studentName}">
-            </div>
-            <div class="mb-3">
-                <label for="studentEmailInput" class="form-label"><strong>Email:</strong></label>
-                <input type="email" class="form-control" id="studentEmailInput" value="${studentEmail}">
-            </div>
-            <button type="submit" class="btn btn-primary">Save</button>
-        </form>
-        <div id="saveMessage" class="mt-2 text-success"></div>
-    `;
+    // --- Populate Student Info Form ---
+    const nameInput = document.getElementById("studentNameInput");
+    const emailInput = document.getElementById("studentEmailInput");
+    nameInput.value = localStorage.getItem("studentName");
+    emailInput.value = localStorage.getItem("studentEmail");
 
-    // Handle form submission
-    const form = document.getElementById("studentInfoForm");
     const saveMessage = document.getElementById("saveMessage");
 
-    form.addEventListener("submit", (e) => {
+    document.getElementById("studentInfoForm").addEventListener("submit", (e) => {
         e.preventDefault();
-        const newName = document.getElementById("studentNameInput").value.trim();
-        const newEmail = document.getElementById("studentEmailInput").value.trim();
+        const newName = nameInput.value.trim();
+        const newEmail = emailInput.value.trim();
 
         if (newName && newEmail) {
             localStorage.setItem("studentName", newName);
@@ -51,41 +33,32 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // --- Completed Courses Section ---
-    const completed = getFromLocalStorage("completedCourses") || [];
-    const list = document.getElementById("completedCoursesList");
-    list.innerHTML = "";
+    // --- Display Completed Courses ---
+    const completed = JSON.parse(localStorage.getItem("completedCourses") || "[]");
+    const completedList = document.getElementById("completedCoursesList");
+    completedList.innerHTML = "";
     completed.forEach(course => {
         const li = document.createElement("li");
         li.textContent = course;
-        list.appendChild(li);
+        completedList.appendChild(li);
     });
 
-    // --- Quiz Score ---
-    const score = getFromLocalStorage("quizScore") || 0;
+    // --- Display Quiz Score ---
+    const score = JSON.parse(localStorage.getItem("quizScore") || "0");
     document.getElementById("profileQuizScore").textContent = score + "%";
 
-    // --- Learning Progress ---
-    const progress = courses.length > 0 ? Math.round((completed.length / courses.length) * 100) : 0;
+    // --- Display Learning Progress ---
+    const allCourses = JSON.parse(localStorage.getItem("allCourses") || "[]");
+    const progress = allCourses.length > 0 ? Math.round((completed.length / allCourses.length) * 100) : 0;
     document.getElementById("profileProgress").value = progress;
 
-    // --- Reset Profile Button (only once) ---
-    if (!document.getElementById("resetProfileBtn")) {
-        const resetSection = document.createElement("section");
-        resetSection.classList.add("card", "p-4", "mt-4", "text-center");
-        resetSection.innerHTML = `<button id="resetProfileBtn" class="btn btn-danger">Reset Profile</button>`;
-        studentInfoSection.parentElement.appendChild(resetSection);
-
-        const resetBtn = document.getElementById("resetProfileBtn");
-        resetBtn.addEventListener("click", () => {
-            // Clear all relevant localStorage
-            localStorage.removeItem("studentName");
-            localStorage.removeItem("studentEmail");
-            localStorage.removeItem("completedCourses");
-            localStorage.removeItem("quizScore");
-
-            alert("Profile has been reset!");
+    // --- Reset Profile Button ---
+    const resetBtn = document.getElementById("resetProfileBtn");
+    resetBtn.addEventListener("click", () => {
+        if (confirm("Are you sure you want to reset your profile?")) {
+            localStorage.clear();
+            alert("All profile data cleared!");
             location.reload();
-        });
-    }
+        }
+    });
 });
