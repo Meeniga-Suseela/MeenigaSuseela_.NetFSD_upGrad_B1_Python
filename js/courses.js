@@ -32,15 +32,24 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    window.markComplete = function(courseTitle) {
-        let completed = getFromLocalStorage("completedCourses") || [];
-        if (!completed.includes(courseTitle)) {
-            completed.push(courseTitle);
-            saveToLocalStorage("completedCourses", completed);
-            alert(`${courseTitle} marked as completed!`);
-            renderCourseCards();
-        }
+    // --- Existing code in courses.js ---
+window.markComplete = function(courseTitle) {
+    let completed = getFromLocalStorage("completedCourses") || [];
+    
+    if (completed.includes(courseTitle)) {
+        // ✅ Course is already completed, remove it
+        completed = completed.filter(c => c !== courseTitle);
+        alert(`${courseTitle} marked as not completed.`);
+    } else {
+        // ✅ Mark course as completed
+        completed.push(courseTitle);
+        alert(`${courseTitle} marked as completed!`);
     }
+
+    saveToLocalStorage("completedCourses", completed);
+    renderCourseCards();
+}
+// --- End of updated function ---
 
     renderCourseTable();
     renderCourseCards();
