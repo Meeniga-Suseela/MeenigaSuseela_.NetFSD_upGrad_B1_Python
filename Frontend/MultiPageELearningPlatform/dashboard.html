@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/styles.css">
+<script>
+if (!localStorage.getItem("isLoggedIn")) {
+    window.location.href = "login.html";
+}
+</script>
+</head>
+
+<body>
+
+<header class="bg-primary text-white text-center p-3">
+    <h1>E-Learning Dashboard</h1>
+</header>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="dashboard.html">📚 LearnSpace</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu"
+            aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link active" href="dashboard.html">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
+                <li class="nav-item"><a class="nav-link" href="quiz.html">Quiz</a></li>
+                <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
+                <li class="nav-item ms-2">
+    <button class="btn btn-danger" onclick="logout()">Logout</button>
+</li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-2">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="dashboard.html">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+        </ol>
+    </nav>
+</div>
+
+<main class="container mt-4">
+    <section class="hero-section text-center p-4 mb-4">
+        <h2 id="welcomeMessage">Welcome to Your Learning Dashboard</h2>
+        <p>Track courses, attempt quizzes and monitor your progress.</p>
+    </section>
+
+
+    <section class="dashboard-grid">
+        <div class="dashboard-card">
+            <h5>Total Courses</h5>
+            <p id="totalCourses" class="display-6"></p>
+        </div>
+        <div class="dashboard-card">
+            <h5>Completed Courses</h5>
+            <p id="completedCourses" class="display-6"></p>
+        </div>
+        <div class="dashboard-card">
+            <h5>Quiz Score</h5>
+            <p id="quizScore" class="display-6"></p>
+        </div>
+        <div class="dashboard-card">
+            <h5>Progress</h5>
+            <progress id="progressBar" value="0" max="100"></progress>
+        </div>
+    </section>
+</main>
+
+<footer class="text-center p-3 bg-primary text-white mt-5">
+    © 2026 Multi-Page E-Learning Platform | Developed by Meeniga Suseela
+</footer>
+
+
+<script src="js/utils.js"></script>
+<script src="js/data.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
