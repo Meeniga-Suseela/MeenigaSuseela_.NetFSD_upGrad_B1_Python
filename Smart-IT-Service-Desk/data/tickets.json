@@ -1,0 +1,74 @@
+[
+    {
+        "id": 1,
+        "emp": "Vijji",
+        "dept": "IT",
+        "issue": "Laptop Slow",
+        "priority": "P3",
+        "status": "Closed",
+        "created": "2026-04-28T13:12:59.980065"
+    },
+    {
+        "id": 2,
+        "emp": "Naveen",
+        "dept": "IT",
+        "issue": "Password Reset",
+        "priority": "P4",
+        "status": "Resolved",
+        "created": "2026-04-28T13:13:22.602460"
+    },
+    {
+        "id": 3,
+        "emp": "Vital",
+        "dept": "IT",
+        "issue": "Laptop Slow",
+        "priority": "P3",
+        "status": "Open",
+        "created": "2020-01-28T00:00:00.666241"
+    },
+    {
+        "id": 4,
+        "emp": "Susee",
+        "dept": "IT",
+        "issue": "Laptop Slow",
+        "priority": "P3",
+        "status": "Open",
+        "created": "2026-04-28T13:35:24.865759"
+    },
+    {
+        "id": 5,
+        "emp": "Susee",
+        "dept": "IT",
+        "issue": "Laptop Slow",
+        "priority": "P3",
+        "status": "Open",
+        "created": "2026-04-28T13:35:38.213712"
+    },
+    {
+        "id": 6,
+        "emp": "Susee",
+        "dept": "IT",
+        "issue": "Laptop Slow",
+        "priority": "P3",
+        "status": "Open",
+        "created": "2026-04-28T13:35:56.804016"
+    },
+    {
+        "id": 7,
+        "emp": "Susee",
+        "dept": "IT",
+        "issue": "Laptop slow",
+        "priority": "P4",
+        "status": "Open",
+        "created": "2026-04-28T13:36:06.387705"
+    },
+    {
+        "id": 8,
+        "emp": "Susee",
+        "dept": "IR",
+        "issue": "Laptop Slow",
+        "priority": "P3",
+        "status": "Open",
+        "created": "2026-04-28T13:36:42.735246"
+    }
+]

@@ -1,0 +1,20 @@
+[
+    {
+        "id": 9,
+        "emp": "User",
+        "dept": "IT",
+        "issue": "Laptop Slow",
+        "priority": "P3",
+        "status": "Open",
+        "created": "2026-04-28T13:58:12.231974"
+    },
+    {
+        "id": 9,
+        "emp": "Admin",
+        "dept": "HR",
+        "issue": "Internet Down",
+        "priority": "P2",
+        "status": "Open",
+        "created": "2026-04-28T13:58:12.250234"
+    }
+]
