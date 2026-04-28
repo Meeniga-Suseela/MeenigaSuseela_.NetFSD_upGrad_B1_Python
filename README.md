@@ -1,4 +1,13 @@
 
+## 📂 Projects
+
+### 1. E-Learning Platform
+- Full-stack (ASP.NET Core + SQL Server + Frontend)
+
+### 2. Smart IT Service Desk
+- Python ITIL automation (tickets, SLA, monitoring, reports)
+- 📁 Folder: `Smart-IT-Service-Desk/`
+
 # 📚 MultiPage E-Learning Platform (Full Stack)
 
 ## 📌 Project Overview
